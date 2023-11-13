@@ -63,12 +63,27 @@ Invoke the first Lambda function with an event containing the following paramete
 
 ## Environment Variables
 
-MY_BUCKET_NAME = 'my_bucket'
+### Picture Assembly Lambda
+
+BUCKET_NAME = 'my_bucket'
+PICTURE_NAME = 'my_picture'
+
+Customize the `BUCKET_NAME` and `PICTURE_NAME` variable by either setting it as an Environment Variable in the Lambda console or directly modifying the code.
+
+```plaintext
+BUCKET_NAME=bucket_name
+PICTURE_NAME=picture_name
+```
+
+### Picture Storage Lambda
+
 REASSEMBLY_FUNCTION_ARN = 'reassembly_function_ARN'
 
-Customize the `MY_BUCKET_NAME` variable by either setting it as an Environment Variable in the Lambda console or directly modifying the code with your desired bucket name.
-
 Set the `REASSEMBLY_FUNCTION_ARN` variable to the ARN of the Lambda function responsible for picture reassembly. This allows you to easily update the function's ARN without modifying the code. You can set it as an Environment Variable in the Lambda console or directly modify the code.
+
+```plaintext
+REASSEMBLY_FUNCTION_ARN = your_arn
+```
 
 ## Dependencies
 

@@ -1,3 +1,4 @@
+# set env variable PICTURE_NAME, BUCKET_NAME
 ####### Requires PIL lambda layer
 import boto3
 import json
@@ -7,7 +8,6 @@ from PIL import Image
 import time
 
 s3 = boto3.client('s3')
-MY_BUCKET_NAME = 'my_bucket'
 
 def lambda_handler(event, context):
     # Extract the table name from the event payload
@@ -61,14 +61,12 @@ def reassemble_image(pieces):
 
 def save_to_s3(image):
     # Save the assembled image to S3
-    bucket_name = 'hydropi'
     current_time = int(time.time())
-    key = f'{MY_BUCKET_NAME}_{current_time}.jpeg'
+    key = f'{PICTURE_NAME}_{current_time}.jpeg'
     with BytesIO() as output:
         image.save(output, format='JPEG')
         output.seek(0)
-        s3.put_object(Bucket=bucket_name, Key=key, Body=output)
-        #s3.put_object(Bucket=bucket_name, Key='garden_pic.jpg', Body=output)
+        s3.put_object(Bucket=BUCKET_NAME, Key=key, Body=output)
 
 
 def clean_up_dynamodb(table_name):

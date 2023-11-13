@@ -1,3 +1,4 @@
+# Set env variable REASSEMBLY_FUNCTION_ARN
 import boto3
 import botocore.exceptions
 from datetime import datetime, timedelta
@@ -5,7 +6,6 @@ import time
 import json
 import base64
 
-REASSEMBLY_FUNCTION_ARN = 'reassembly_function_ARN'
 
 dynamodb = boto3.resource('dynamodb')
 lambda_client = boto3.client('lambda')
